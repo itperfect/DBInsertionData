@@ -1,9 +1,7 @@
 import string
 import random
-
 import mysql.connector
 from email_validator import validate_email
-
 from datetime import datetime
 
 SETTINGS = {
