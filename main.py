@@ -7,13 +7,13 @@ from email_validator import validate_email
 from datetime import datetime
 
 SETTINGS = {
-    'DB_HOST': '172.16.10.59',
-    'DB_USER': 'salkov',
-    'DB_PASWD': '1ddorog3',
+    'DB_HOST': '127.0.0.1',
+    'DB_USER': 'root',
+    'DB_PASWD': '',
     'DB_NAME': 'test1',
+    'DB_TBL': 'users',
 
-    'DATA_FILE': '1644055729399687.25000'
-
+    'DATA_FILE': '1644055729399687.100000'
 }
 
 t0 = datetime.timestamp(datetime.now())
@@ -70,10 +70,10 @@ if len(clean_data) > 1:
                     print("Skipping: {}: ".format(email))
                     skipped += 1
                 else:
-                    query = ("INSERT INTO test1.users (`name`, `email`) VALUES (%s, %s)")
+                    query = ("INSERT INTO users (`name`, `email`) VALUES (%s, %s)")
                     query_data = (u_name, email)
                     cursor.execute(query, query_data)
-                    print("Storring email: {}".format(email))
+                    print("Storing email: {}".format(email))
                     stored += 1
 
                 cnt += 1
@@ -87,7 +87,7 @@ if len(clean_data) > 1:
             #     print(res)
 
             print("Skipped emails: {}".format(skipped))
-            print("Storred emails: {}".format(stored))
+            print("Stored emails: {}".format(stored))
             print("{} seconds".format(datetime.timestamp(datetime.now()) - t0))
 
 if __name__ == '__main__':
